@@ -4,7 +4,7 @@ import axios from "axios"
 
 const Login = props => {
     // Hooks, setting state 
-    const [creds, setCreds] = useState({username: "", password1: "", password2: ""}); 
+    const [creds, setCreds] = useState({username: "", password: ""}); 
     
     const handleChange = e => {
         setCreds({...creds, [e.target.name]:[e.target.value]})
@@ -35,18 +35,10 @@ const Login = props => {
 
             <input
                 type= "type" 
-                name= "password1"
-                placeholder= "password1"
+                name= "password"
+                placeholder= "password"
                 onChange= {handleChange}
-                value= {creds.password1}
-            /> 
-
-            <input
-                type= "type" 
-                name= "password2"
-                placeholder= "password2"
-                onChange= {handleChange}
-                value= {creds.password2}
+                value= {creds.password}
             /> 
 
             <button type= "submit">
