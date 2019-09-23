@@ -34,7 +34,7 @@ const Login = props => {
             /> 
 
             <input
-                type= "type" 
+                type= "password" 
                 name= "password"
                 placeholder= "password"
                 onChange= {handleChange}
