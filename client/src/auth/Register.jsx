@@ -31,76 +31,58 @@ const Signup = styled.form`
     }
 `;
 
-const Register = props => {
-  // Hooks, setting state
-  const [creds, setCreds] = useState({
-    username: "",
-    email: "",
-    password1: "",
-    password2: ""
-  });
-
-  const registerUser = newUser => {
-    axios
-      .post("http://localhost:8000/api/registration/", newUser)
-      .then(res => {
-        console.log("Response:", res.data);
-        localStorage.setItem("token", res.data);
-        //props.history.push('/')
-      })
-      .catch(err => console.log(err.response));
-  };
-
-  const handleChange = e => {
-    setCreds({ ...creds, [e.target.name]: [e.target.value] });
-  };
-
-  const handleSubmit = e => {
-    if (e) {
-        e.preventDefault();
-    registerUser(creds);
-    }
-  };
-
-  return (
-      <FormContainer>
-    <Signup onSubmit={handleSubmit}>
-      <input
-        type="type"
-        name="username"
-        placeholder="username"
-        onChange={handleChange}
-        value={creds.username}
-      />
-
-      <input
-        type="type"
-        name="email"
-        placeholder="email"
-        onChange={handleChange}
-        value={creds.email}
-      />
-
-      <input
-        type="password"
-        name="password1"
-        placeholder="password1"
-        onChange={handleChange}
-        value={creds.password1}
-      />
-
-      <input
-        type="password"
-        name="password2"
-        placeholder="password2"
-        onChange={handleChange}
-        value={creds.password2}
-      />
-
-      <button type="submit">Register</button>
-    </Signup>
-    </FormContainer>
-  );
-};
-
-export default Register;
+function Register(props) {
+    const [creds, setCreds] = useState({});
+  
+    const handleChange = e => {
+      setCreds({
+        ...creds,
+        [e.target.name]: e.target.value
+      });
+    };
+  
+    const handleLogin = e => {
+      e.preventDefault();
+      axios
+        .post(`https://teampheroku.herokuapp.com/api/registration/`, creds)
+        .then(res => {
+          localStorage.setItem("key", res.data.key);
+          props.history.push('/protected')
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    };
+  
+    return (
+      <div className="Login-Page">
+        <form className="login-form" onSubmit={handleLogin}>
+          <h1 className="Login-Title">Register</h1>
+          <input
+            type="text"
+            placeholder="username"
+            name="username"
+            value={creds.username}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            name="password1"
+            value={creds.password1}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="confirm password"
+            name="password2"
+            value={creds.password2}
+            onChange={handleChange}
+          />
+          <button className="registerBtn">Register</button>
+        </form>
+      </div>
+    );
+  }
+  
+  export default Register;

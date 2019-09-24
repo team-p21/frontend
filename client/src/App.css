@@ -1,12 +1,5 @@
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -16,6 +9,33 @@
   font-size: calc(10px + 2vmin);
   color: white;
   font-family: 'Press Start 2P', cursive;
+}
+.App-header {
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: -200px;
+}
+
+.button-wrapper {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+button {
+  font-family: 'Press Start 2P';
+  width: 20%; 
+  padding: 2%; 
+  margin: 2%; 
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: #39ff14; 
+  color: white;
 }
 
 h3 {
