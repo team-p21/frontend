@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import GlobalStyle from './styles/Global'
 
 import Register from './auth/Register'
 import Home from './components/Home'
