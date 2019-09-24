@@ -6,6 +6,8 @@ import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Home from "./components/Home";
 import Header from "./components/Header"; 
+import PrivateRoute from './components/PrivateRoute';
+
 
 function App(props) {
   
@@ -16,6 +18,7 @@ function App(props) {
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
+      {/* <PrivateRoute exact path='/gameplay' component={Game} /> */}
     </div>
     </AppContainer>
   );
