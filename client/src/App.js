@@ -46,9 +46,12 @@ const Header = styled.section`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: -193px;
+  margin-top: -230px;
+  margin-bottom: 2%;
   padding-left: 80px;
   padding-right: 50px;
+  padding-bottom: 1%;
+  border-bottom: 2px dashed #f9f9f9;
 
   a {
     color: #59c2fe;
