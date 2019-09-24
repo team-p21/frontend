@@ -33,5 +33,11 @@ button {
   width: 20%; 
   padding: 2%; 
   margin: 2%; 
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
 }
 
+button:hover {
+  background-color: #39ff14; 
+  color: white;
+}
