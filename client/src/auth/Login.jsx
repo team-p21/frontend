@@ -15,10 +15,10 @@ function Login(props) {
     const handleLogin = e => {
       e.preventDefault();
       axios
-        .post(`https://mud-be.herokuapp.com/api/login/`, creds)
+        .post(`https://teampheroku.herokuapp.com/api/login/`, creds)
         .then(res => {
           localStorage.setItem("key", res.data.key);
-          props.history.push("/protected");
+          props.history.push("/");
         })
         .catch(error => {
           console.log(error.message);
