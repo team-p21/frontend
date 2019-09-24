@@ -11,7 +11,6 @@ const HomeContainer = styled.section`
         font-family: "Roboto", sans-serif;
     }
 
-
 `;
 
 const Home = () => {

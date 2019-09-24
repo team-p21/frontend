@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, NavLink, withRouter } from "react-router-dom";
 import styled from 'styled-components';
-import "./App.css";
 
 import Register from "./auth/Register";
 import Login from "./auth/Login";
