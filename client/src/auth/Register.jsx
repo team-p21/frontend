@@ -47,7 +47,7 @@ function Register(props) {
         .post(`https://teampheroku.herokuapp.com/api/registration/`, creds)
         .then(res => {
           localStorage.setItem("key", res.data.key);
-          props.history.push('/protected')
+          props.history.push('/gameplay')
         })
         .catch(error => {
           console.log(error.message);

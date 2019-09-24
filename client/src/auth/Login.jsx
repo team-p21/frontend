@@ -18,7 +18,7 @@ function Login(props) {
         .post(`https://teampheroku.herokuapp.com/api/login/`, creds)
         .then(res => {
           localStorage.setItem("key", res.data.key);
-          props.history.push("/");
+          props.history.push("/gameplay");
         })
         .catch(error => {
           console.log(error.message);
