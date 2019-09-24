@@ -1,68 +1,106 @@
-import React, {useState} from "react"
+import React, { useState } from "react";
+import axios from "axios";
+import styled from 'styled-components';
 
-import axios from "axios"
+const FormContainer = styled.section`
+    margin: 0 auto;
+    padding: 7.5%;
+    border-radius: 5px;
+    border: 2px solid red;
+`;
 
-const Register = props => {
-    // Hooks, setting state 
-    const [creds, setCreds] = useState({username: "", email: "", password1: "", password2: ""}); 
-    
-    const handleChange = e => {
-        setCreds({...creds, [e.target.name]:[e.target.value]})
-    } 
+const Signup = styled.form`
+    display: flex;
+    flex-direction: column;
+    margin: 8%;
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        axios.post("http://lambda-mud-test.herokuapp.com/api/register/", creds)
-        .then(res => {
-            console.log("Response:", res)
-            localStorage.setItem("token", res.data.key)
-        })
-        .catch(
-            err => 
-            console.log(err.response)
-        )
+    input {
+        width: 100%;
+        padding: 5% 5px;
+        margin: 5% ;
+        border: 1px solid red;
+        border-radius: 5px;
     }
 
-    return(
-        <form onSubmit= {handleSubmit}>
-            <input
-            type= "type" 
-            name= "username"
-            placeholder= "username"
-            onChange= {handleChange}
-            value= {creds.username}
-            /> 
+    button {
+        width: 110%;
+        padding: 5% 5px;
+        margin: 5%;
+        border: 1px solid red;
+        border-radius: 5px; 
+    }
+`;
 
-            <input
-                type= "type" 
-                name= "email"
-                placeholder= "email"
-                onChange= {handleChange}
-                value= {creds.email}
-            /> 
+const Register = props => {
+  // Hooks, setting state
+  const [creds, setCreds] = useState({
+    username: "",
+    email: "",
+    password1: "",
+    password2: ""
+  });
 
-            <input
-                type= "password" 
-                name= "password1"
-                placeholder= "password1"
-                onChange= {handleChange}
-                value= {creds.password1}
-            /> 
+  const registerUser = newUser => {
+    axios
+      .post("http://localhost:8000/api/registration/", newUser)
+      .then(res => {
+        console.log("Response:", res.data);
+        localStorage.setItem("token", res.data);
+        //props.history.push('/')
+      })
+      .catch(err => console.log(err.response));
+  };
 
-            <input
-                type= "password" 
-                name= "password2"
-                placeholder= "password2"
-                onChange= {handleChange}
-                value= {creds.password2}
-            /> 
+  const handleChange = e => {
+    setCreds({ ...creds, [e.target.name]: [e.target.value] });
+  };
 
-            <button type= "submit">
-                Register
-            </button>
+  const handleSubmit = e => {
+    if (e) {
+        e.preventDefault();
+    registerUser(creds);
+    }
+  };
 
-        </form>  
-    )
-}
+  return (
+      <FormContainer>
+    <Signup onSubmit={handleSubmit}>
+      <input
+        type="type"
+        name="username"
+        placeholder="username"
+        onChange={handleChange}
+        value={creds.username}
+      />
 
-export default Register 
+      <input
+        type="type"
+        name="email"
+        placeholder="email"
+        onChange={handleChange}
+        value={creds.email}
+      />
+
+      <input
+        type="password"
+        name="password1"
+        placeholder="password1"
+        onChange={handleChange}
+        value={creds.password1}
+      />
+
+      <input
+        type="password"
+        name="password2"
+        placeholder="password2"
+        onChange={handleChange}
+        value={creds.password2}
+      />
+
+      <button type="submit">Register</button>
+    </Signup>
+    </FormContainer>
+  );
+};
+
+export default Register;
