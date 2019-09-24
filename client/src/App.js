@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import React from "react";
 import { Route, NavLink, withRouter } from "react-router-dom";
 import "./App.css";
-=======
-import React from 'react';
-import './App.css';
->>>>>>> 67f04a0f4dd06bbb003b5889440e97e0db7892ee
 
 import Register from "./auth/Register";
 import Login from "./auth/Login";
