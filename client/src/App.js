@@ -6,6 +6,7 @@ import "./App.css";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Home from "./components/Home";
+import PrivateRoute from './components/PrivateRoute';
 
 function App(props) {
   const logOut = e => {
@@ -23,7 +24,7 @@ function App(props) {
             <NavLink to="/register">Register</NavLink>
           </>
         )}
-        <NavLink to="protected">New Game</NavLink>
+        <NavLink to="/gameplay">New Game</NavLink>
         <button
           className={
             localStorage.getItem("key") ? "loginOutBtn" : "displayNone"
@@ -36,6 +37,7 @@ function App(props) {
       <Route exact path="/" component={Home} />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
+      {/* <PrivateRoute exact path='/gameplay' component={Game} /> */}
     </div>
   );
 }
