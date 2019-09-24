@@ -15,8 +15,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Press Start 2P', cursive;
 }
 
-.App-link {
-  color: #09d3ac;
-}

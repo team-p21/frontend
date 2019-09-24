@@ -1,8 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Home = () => {
-    <h1>Retro MUD</h1>
-}
+  return (
+    <div>
+      <h1>Retro MUD</h1>
+    </div>
+  );
+};
 
 export default Home;
