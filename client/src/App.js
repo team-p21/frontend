@@ -14,6 +14,7 @@ function App(props) {
     props.history.push("/");
   };
   return (
+    <AppContainer >
     <div className="App">
       <Header>
         {!localStorage.getItem("key") && (
@@ -37,8 +38,23 @@ function App(props) {
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
     </div>
+    </AppContainer>
   );
 }
+
+// Basic styling for the overall App 
+const AppContainer = styled.section`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  `
+
 
 const Header = styled.section`
   width: 90%;
