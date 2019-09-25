@@ -8,6 +8,8 @@ import Home from "./components/Home";
 import Header from "./components/Header"; 
 // Testing rooms 
 import Rooms from "./components/Rooms"; 
+import PrivateRoute from './components/PrivateRoute';
+
 
 function App(props) {
   
@@ -19,6 +21,7 @@ function App(props) {
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/map" component={Rooms} />  
+      {/* <PrivateRoute exact path='/gameplay' component={Game} /> */}
     </div>
     </AppContainer>
   );
