@@ -42,7 +42,7 @@ const Header = (props) => {
 
 // Styled components 
 const HeaderStyle = styled.section`
-  width: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -65,7 +65,7 @@ const HeaderStyle = styled.section`
 
   button {
     font-family: 'Press Start 2P';
-    width: 15%;
+    width: 30%;
     padding: 1%;
     margin: 1%;
     background-color: #59c2fe;
