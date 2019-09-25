@@ -6,6 +6,8 @@ import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Home from "./components/Home";
 import Header from "./components/Header"; 
+// Testing rooms 
+import Rooms from "./components/Rooms"; 
 
 function App(props) {
   
@@ -16,6 +18,7 @@ function App(props) {
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/map" component={Rooms} />  
     </div>
     </AppContainer>
   );
