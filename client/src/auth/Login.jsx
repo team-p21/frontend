@@ -2,7 +2,35 @@ import React, {useState} from "react"
 
 import axios from "axios"
 
-import Header from '../components/Header'
+import styled from "styled-components";
+
+const InputContainer = styled.section`
+  width: 100%; 
+  margin-top: 0%; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+
+  input {
+    border: 2px solid red; 
+  }
+
+  button {
+    font-family: 'Press Start 2P';
+    width: 100%;
+    padding: 5%;
+    margin: 50px 5%;;
+    background-color: #39ff14;
+    border: 1px solid #39ff14;
+    border-radius: 2px;
+
+    &:hover {
+      background-color: #59c2fe;
+      border: 1px solid #59c2fe;
+      color: #282c34;
+    }
+  }
+`
 
 function Login(props) {
     const [creds, setCreds] = useState({});
@@ -30,6 +58,7 @@ function Login(props) {
     return (
       <div className="Login-Page">
         <form className="login-form" onSubmit={handleLogin}>
+          <InputContainer>
           <h1 className="Login-Title">Login</h1>
           <input
             type="text"
@@ -46,6 +75,7 @@ function Login(props) {
             onChange={handleChange}
           />
           <button className="loginBtn">Login</button>
+          </InputContainer>
         </form>
       </div>
     );
