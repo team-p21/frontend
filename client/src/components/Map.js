@@ -116,18 +116,19 @@ function Map({ currentRoom }) {
         </FlexibleXYPlot>
 
       </ID>
-      <div>
+      <DisplaySection>
+      <Display>
         <h1>Welcome {users.name}!</h1>
         <p>Please travel {users.room_direction} to continue</p>
-      </div>
+      </Display>
 
-      <div>
-        <h1>Move</h1>
+      <Movement>
         <button onClick={() => move({ "direction": "n" })}>Move North </button>
         <button onClick={() => move({ "direction": "s" })}>Move South </button>
         <button onClick={() => move({ "direction": "e" })}>Move East </button>
         <button onClick={() => move({ "direction": "w" })}>Move West </button>
-      </div>
+      </Movement>
+      </DisplaySection>
     </Container>
   );
 }
@@ -139,16 +140,63 @@ const Container = styled.section`
   height: 0 auto;
   display: flex;
   flex-direction: flex-start;
-  justify-content: center;
-  margin-left: 50px;
+  justify-content: space-between;
+  margin-left: 20px;
 `;
 
 const ID = styled.div`
   border: 5px dashed #fe50c2;
   padding-right: 40px;
   padding-top: 25px;
-  
-  path {
-    margin-right: 20px;
+`;
+
+const DisplaySection = styled.section`
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+`;
+
+const Display = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 4%;
+  margin-left: 8%;
+  border: 3px solid #1a1a1a;
+  border-bottom: none;
+  padding-left: 7%;
+  margin-right: 55px;
+  h1, p {
+    align-items: center;
+  }
+`;
+
+const Movement = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #1a1a1a;
+  border-top: none;
+  margin-left: 8%;
+  margin-right: 55px;
+
+  button {
+    font-family: 'Press Start 2P';
+    width: 40%;
+    padding: 2%;
+    margin: 1%;;
+    background-color: #39ff14;
+    border: 1px solid #39ff14;
+    border-radius: 2px;
+    &:hover {
+      background-color: #fe50c2;
+      border: 1px solid #fe50c2;
+      color: #282c34;
+    }
+    &:first-child {
+      margin-top: 5%;
+    }
+    &:last-child {
+      margin-bottom: 5%;
+    }
   }
 `;

@@ -42,7 +42,7 @@ const Header = (props) => {
 
 // Styled components 
 const HeaderStyle = styled.section`
-  width: 92.4%;
+  width: 90.8%;
   display: flex;
   flex-direction: row;
   align-items: center;
