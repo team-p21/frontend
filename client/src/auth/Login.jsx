@@ -12,7 +12,12 @@ const InputContainer = styled.section`
   align-items: center; 
 
   input {
-    border: 2px solid red; 
+    border: 2px solid #59c2fe; 
+    font-family: "Roboto", sans-serif;
+    font-size: 80%; 
+    width: 100%; 
+    padding: 2%; 
+    margin: 2%; 
   }
 
   button {
