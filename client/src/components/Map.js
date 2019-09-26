@@ -15,8 +15,8 @@ function Map({ currentRoom }) {
     // axiosWithAuth()
     //   .get("https://teampheroku.herokuapp.com/api/adv/initialize")
     //   .then(res => {
-    //     // console.log(res)
-    //     // Affecting state with response from server
+    //     console.log(res)
+    //     Affecting state with response from server
     //     setRooms(res.data);
     //   })
     //   .catch(err => {
@@ -33,7 +33,7 @@ function Map({ currentRoom }) {
         console.log(err);
       });
   }, []); // Square braces stop an infinite loop
-
+  console.log(rooms)
   return (
     <Container>
       <ID>
