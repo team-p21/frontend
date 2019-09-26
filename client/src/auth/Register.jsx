@@ -1,6 +1,39 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styled from 'styled-components';
+import styled from "styled-components";
+
+const RegisterContainer = styled.section`
+  width: 100%; 
+  margin-top: 0%; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+
+  input {
+    border: 2px solid #59c2fe; 
+    font-family: "Roboto", sans-serif;
+    font-size: 80%; 
+    width: 100%; 
+    padding: 2%; 
+    margin: 2%; 
+  }
+
+  button {
+    font-family: 'Press Start 2P';
+    width: 100%;
+    padding: 5%;
+    margin: 50px 5%;;
+    background-color: #39ff14;
+    border: 1px solid #39ff14;
+    border-radius: 2px;
+
+    &:hover {
+      background-color: #59c2fe;
+      border: 1px solid #59c2fe;
+      color: #282c34;
+    }
+  }
+`
 
 function Register(props) {
     const [creds, setCreds] = useState({});
@@ -30,6 +63,7 @@ function Register(props) {
       <div className="Login-Page">
         
         <form className="login-form" onSubmit={handleLogin}>
+          <RegisterContainer>
           <h1 className="Login-Title">Register</h1>
           <input
             type="text"
@@ -53,6 +87,7 @@ function Register(props) {
             onChange={handleChange}
           />
           <button className="registerBtn">Register</button>
+          </RegisterContainer>
         </form>
         
       </div>
