@@ -5,7 +5,11 @@ import {
   XAxis,
   YAxis,
   HorizontalGridLines,
-  LineSeries
+  LineSeries,
+  VerticalGridLines,
+  MarkSeries,
+  FlexibleXYPlot,
+  VerticalBarSeries
 } from "react-vis";
 
 import axiosWithAuth from "../auth/axiosAuth";
@@ -34,8 +38,17 @@ function Map({ currentRoom }) {
       .then(res => {
         //console.log(res)
         // Affecting state with response from server
+        console.log(res.data)
+        let dataArray = []
 
-        setRooms(res.data)
+        {res.data.map(room => {
+          let x = room.fields.x
+          let y = room.fields.y
+          return dataArray.push({'x': x, 'y': y})
+        })}
+        
+        console.log("DATA ARRAY AFTER MAP", dataArray)
+        setRooms(dataArray)
       })
       .catch(err => {
         console.log(err);
@@ -46,15 +59,20 @@ function Map({ currentRoom }) {
   return (
     <Container>
       <ID>
-        <XYPlot width={300} height={300}>
+        <FlexibleXYPlot width={700} height={700}>
+          <MarkSeries data={rooms} />
+          {/* <VerticalGridLines />
           <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <MarkSeries data={[{x: 1, y: 1}, {x: 1, y: 2}, {x: 1, y: 3}]} /> */}
+          {/*
           <LineSeries
             color="red"
-            data= {[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+            data= {[{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}]}
           />
-          <XAxis title="X" />
-          <YAxis />
-        </XYPlot>
+          */}
+        </FlexibleXYPlot>
       </ID>
     </Container>
   );
