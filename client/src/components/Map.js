@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  HorizontalGridLines,
+  LineSeries
+} from "react-vis";
 
 import axiosWithAuth from "../auth/axiosAuth";
-
 
 function Map({ currentRoom }) {
   // Clearing our state
   const [rooms, setRooms] = useState([]);
+  const [data, setData] = useState([]);
 
   // Making axios call, useEffect more efficient with size of our data
   // Replaces componentDidMount
@@ -15,8 +22,8 @@ function Map({ currentRoom }) {
     // axiosWithAuth()
     //   .get("https://teampheroku.herokuapp.com/api/adv/initialize")
     //   .then(res => {
-    //     console.log(res)
-    //     Affecting state with response from server
+    //     //console.log(res)
+    //     //Affecting state with response from server
     //     setRooms(res.data);
     //   })
     //   .catch(err => {
@@ -27,23 +34,29 @@ function Map({ currentRoom }) {
       .then(res => {
         //console.log(res)
         // Affecting state with response from server
-        setRooms(res.data);
+
+        setRooms(res.data)
       })
       .catch(err => {
         console.log(err);
       });
   }, []); // Square braces stop an infinite loop
-  console.log(rooms)
+  console.log(rooms);
+
   return (
     <Container>
       <ID>
-        {rooms.map(room => {
-          return (
-            <p>{room.id + ','}</p>
-          )
-        })}
+        <XYPlot width={300} height={300}>
+          <HorizontalGridLines />
+          <LineSeries
+            color="red"
+            data= {[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+          />
+          <XAxis title="X" />
+          <YAxis />
+        </XYPlot>
       </ID>
-      </Container>
+    </Container>
   );
 }
 

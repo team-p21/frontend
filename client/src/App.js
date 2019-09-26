@@ -20,8 +20,8 @@ function App(props) {
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/map" component={Map} />
-          {/* <PrivateRoute exact path='/gameplay' component={Game} /> */}
+          {/* <Route exact path="/gameplay" component={Map} /> */}
+          <PrivateRoute exact path='/gameplay' component={Map} />
         </div>
       </AppContainer>
     </container>

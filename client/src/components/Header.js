@@ -25,7 +25,7 @@ const Header = (props) => {
             <NavLink to="/register">Register</NavLink>
           </>
         )}
-        <NavLink to="protected">New Game</NavLink>
+        <NavLink to="/gameplay">New Game</NavLink>
         <button
           className={
             localStorage.getItem("key") ? "loginOutBtn" : "displayNone"
