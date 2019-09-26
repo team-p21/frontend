@@ -14,7 +14,7 @@ function Map({ currentRoom }) {
   const [rooms, setRooms] = useState([]);
   const [roads, setRoads] = useState([]);
   const [users, setUser] = useState([]);
-  const [moving, setMoving] = useState(false);
+  const [trackID, setTrackID] = useState(0)
 
   // Making axios call, useEffect more efficient with size of our data
   // Replaces componentDidMount
@@ -69,6 +69,30 @@ function Map({ currentRoom }) {
   }, []); // Square braces stop an infinite loop
   console.log(rooms);
 
+  const move = direction => {
+    axiosWithAuth()
+      .post("https://teampheroku.herokuapp.com/api/adv/move", direction)
+      .then(res => {
+        console.log("MOVE", res.data)
+        setTrackID(res.data.track_id)
+        console.log(trackID)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    axiosWithAuth()
+      .get("https://teampheroku.herokuapp.com/api/adv/initialize")
+      .then(res => {
+        //console.log(res)
+        //Affecting state with response from server
+        console.log("Data:", res.data);
+        setUser(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   return (
     <Container>
       <ID>
@@ -90,13 +114,20 @@ function Map({ currentRoom }) {
           />
           */}
         </FlexibleXYPlot>
-        
+
       </ID>
       <div>
         <h1>Welcome {users.name}!</h1>
         <p>Please travel {users.room_direction} to continue</p>
       </div>
-      <Move />
+
+      <div>
+        <h1>Move</h1>
+        <button onClick={() => move({ "direction": "n" })}>Move North </button>
+        <button onClick={() => move({ "direction": "s" })}>Move South </button>
+        <button onClick={() => move({ "direction": "e" })}>Move East </button>
+        <button onClick={() => move({ "direction": "w" })}>Move West </button>
+      </div>
     </Container>
   );
 }
