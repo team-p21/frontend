@@ -15,9 +15,11 @@ import PrivateRoute from './components/PrivateRoute';
 function App(props) {
   
   return (
+    <>
+  <Header />
     <AppContainer >
     <div className="App">
-      <Header />
+      
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
@@ -25,6 +27,7 @@ function App(props) {
       {/* <PrivateRoute exact path='/gameplay' component={Game} /> */}
     </div>
     </AppContainer>
+    </>
   );
 }
 

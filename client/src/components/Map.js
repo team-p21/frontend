@@ -12,16 +12,16 @@ function Map({ currentRoom }) {
   // Replaces componentDidMount
   useEffect(() => {
     // Only render maps if authorized (header there)
-    axiosWithAuth()
-      .get("https://teampheroku.herokuapp.com/api/adv/initialize")
-      .then(res => {
-        // console.log(res)
-        // Affecting state with response from server
-        setRooms(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axiosWithAuth()
+    //   .get("https://teampheroku.herokuapp.com/api/adv/initialize")
+    //   .then(res => {
+    //     // console.log(res)
+    //     // Affecting state with response from server
+    //     setRooms(res.data);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
     axiosWithAuth()
       .get("https://teampheroku.herokuapp.com/api/adv/rooms")
       .then(res => {
@@ -33,13 +33,35 @@ function Map({ currentRoom }) {
         console.log(err);
       });
   }, []); // Square braces stop an infinite loop
-console.log(rooms);
+
   return (
-      <>
-        <h1>Wow</h1>
-      </>
+    <Container>
+      <ID>
+        {rooms.map(room => {
+          return (
+            <p>{room.id + ','}</p>
+          )
+        })}
+      </ID>
+      </Container>
   );
 }
 
 export default Map;
 
+const Container = styled.section`
+  width: 100%;
+  height: 0 auto;
+  display: flex;
+  justify-content: center;
+`;
+
+const ID = styled.div`
+  border: 5px dashed #fe50c2;
+  display: flex;
+  flex-direction: row;
+  margin-top: 200px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+`;
