@@ -138,16 +138,17 @@ const Container = styled.section`
   width: 100%;
   height: 0 auto;
   display: flex;
+  flex-direction: flex-start;
   justify-content: center;
+  margin-left: 50px;
 `;
 
 const ID = styled.div`
   border: 5px dashed #fe50c2;
-  display: flex;
-  flex-direction: row;
-  margin-top: 200px;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-right: 5%;
+  padding-right: 40px;
+  padding-top: 25px;
+  
+  path {
+    margin-right: 20px;
+  }
 `;

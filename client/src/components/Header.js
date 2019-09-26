@@ -12,7 +12,7 @@ const Header = (props) => {
     const logOut = e => {
         e.preventDefault();
         localStorage.removeItem("key");
-        props.history.push("/login");
+        props.history.push("/");
       };
 
     return (
