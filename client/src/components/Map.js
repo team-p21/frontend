@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-// import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
-
 import axiosWithAuth from "../auth/axiosAuth";
-import { isTemplateElement } from "@babel/types";
-import { green } from "ansi-colors";
+
 
 function Map({ currentRoom }) {
   // Clearing our state
@@ -15,16 +12,16 @@ function Map({ currentRoom }) {
   // Replaces componentDidMount
   useEffect(() => {
     // Only render maps if authorized (header there)
-    // axiosWithAuth()
-    //   .get("https://teampheroku.herokuapp.com/api/adv/initialize")
-    //   .then(res => {
-    //     // console.log(res)
-    //     // Affecting state with response from server
-    //     setRooms(res.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axiosWithAuth()
+      .get("https://teampheroku.herokuapp.com/api/adv/initialize")
+      .then(res => {
+        // console.log(res)
+        // Affecting state with response from server
+        setRooms(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     axiosWithAuth()
       .get("https://teampheroku.herokuapp.com/api/adv/rooms")
       .then(res => {
@@ -39,34 +36,10 @@ function Map({ currentRoom }) {
 console.log(rooms);
   return (
       <>
-        {rooms.map(room => {
-            return console.log(room)
-        })}
+        <h1>Wow</h1>
       </>
   );
 }
 
 export default Map;
 
-// Comments
-
-/* // Loop through rooms (something like rooms.map), conditionally render based on direction 
-            // Description tells us what drection we can go 
-            // If currentRoom.room_direction is E, draw 1px red 
-                // Else W, draw 1px blue 
-                // Else N, draw 1px green  */
-/* <XYPlot
-            width={300}
-            height={300}>
-        <HorizontalGridLines />
-            <LineSeries
-                {rooms.cords.map(currentRoom => )}/>
-            <XAxis />
-            <YAxis />
-        </XYPlot>  */
-/* {rooms.map(room => {
-            let [x, y] = room.cords 
-            if (room.cords == currentRoom) {
-                return room.cords; 
-            }
-        })} */
