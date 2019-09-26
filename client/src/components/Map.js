@@ -34,27 +34,23 @@ function Map({ currentRoom }) {
       .then(res => {
         //console.log(res)
         // Affecting state with response from server
-
-        setRooms(res.data)
+        setRooms(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   }, []); // Square braces stop an infinite loop
-  console.log(rooms);
+  // console.log(rooms);
 
   return (
     <Container>
       <ID>
-        <XYPlot width={300} height={300}>
-          <HorizontalGridLines />
-          <LineSeries
-            color="red"
-            data= {[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
-          />
-          <XAxis title="X" />
-          <YAxis />
-        </XYPlot>
+        {rooms.map(room => {
+          const roomNumber = room.fields.id;
+          const cords = `id:${roomNumber}  x:${room.fields.x} y:${room.fields.y}`;
+          return console.log(cords);
+        })}
+        }
       </ID>
     </Container>
   );
