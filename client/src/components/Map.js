@@ -78,8 +78,9 @@ function Map({ currentRoom }) {
       <ID>
         <FlexibleXYPlot width={500} height={500}>
           <MarkSeries data={rooms} />
+          <MarkSeries data={users.cords} color="yellow" />
           {roads.map(road => {
-            return <LineSeries data={road} color="blue" />;
+            return <LineSeries data={road} color="#59c2fe" />;
           })}
           {/* <VerticalGridLines />
           <HorizontalGridLines />
@@ -95,9 +96,8 @@ function Map({ currentRoom }) {
         </FlexibleXYPlot>
       </ID>
       <div>
-        
         <h1>Welcome {users.name}!</h1>
-        <p>Please travel "direction" to continue</p>
+        <p>Please travel {users.room_direction} to continue</p>
       </div>
     </Container>
   );
