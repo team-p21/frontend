@@ -17,6 +17,7 @@ import axiosWithAuth from "../auth/axiosAuth";
 function Map({ currentRoom }) {
   // Clearing our state
   const [rooms, setRooms] = useState([]);
+  const [roads, setRoads] = useState([]);
   const [data, setData] = useState([]);
 
   // Making axios call, useEffect more efficient with size of our data
@@ -40,12 +41,25 @@ function Map({ currentRoom }) {
         // Affecting state with response from server
         console.log(res.data)
         let dataArray = []
-
         {res.data.map(room => {
           let x = room.fields.x
           let y = room.fields.y
           return dataArray.push({'x': x, 'y': y})
         })}
+
+        // {1,2},{2,4}
+
+        let roads = []
+        for (let i = 0; i < res.data.length-1; i++) {
+          let xFirst = res.data[i].fields.x
+          let yFirst = res.data[i].fields.y
+          let xSecond = res.data[i+1].fields.x
+          let ySecond = res.data[i+1].fields.y
+          // [{1,2},{1,2}]
+          roads.push([{"x": xFirst, "y": yFirst}, {"x": xSecond, "y": ySecond}])
+        }
+        console.log(roads)
+        setRoads(roads)
         
         console.log("DATA ARRAY AFTER MAP", dataArray)
         setRooms(dataArray)
@@ -59,13 +73,16 @@ function Map({ currentRoom }) {
   return (
     <Container>
       <ID>
-        <FlexibleXYPlot width={700} height={700}>
+        <FlexibleXYPlot width={500} height={500}>
           <MarkSeries data={rooms} />
+          {roads.map(road => {
+            return <LineSeries data={road} color="blue" />
+          })}
           {/* <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <MarkSeries data={[{x: 1, y: 1}, {x: 1, y: 2}, {x: 1, y: 3}]} /> */}
+          <MarkSeries data={} /> */}
           {/*
           <LineSeries
             color="red"
@@ -94,5 +111,6 @@ const ID = styled.div`
   margin-top: 200px;
   justify-content: center;
   flex-wrap: wrap;
-  width: 80%;
+  width: 100%;
+  margin-right:5%;
 `;
