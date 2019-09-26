@@ -13,12 +13,14 @@ import {
 } from "react-vis";
 
 import axiosWithAuth from "../auth/axiosAuth";
+import Move from './Move';
 
 function Map({ currentRoom }) {
   // Clearing our state
   const [rooms, setRooms] = useState([]);
   const [roads, setRoads] = useState([]);
   const [users, setUser] = useState([]);
+  const [moving, setMoving] = useState(false);
 
   // Making axios call, useEffect more efficient with size of our data
   // Replaces componentDidMount
@@ -94,11 +96,13 @@ function Map({ currentRoom }) {
           />
           */}
         </FlexibleXYPlot>
+        
       </ID>
       <div>
         <h1>Welcome {users.name}!</h1>
         <p>Please travel {users.room_direction} to continue</p>
       </div>
+      <Move />
     </Container>
   );
 }
