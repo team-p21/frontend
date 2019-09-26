@@ -76,7 +76,7 @@ function Map({ currentRoom }) {
         <FlexibleXYPlot width={500} height={500}>
           <MarkSeries data={rooms} />
           {roads.map(road => {
-            return <LineSeries data={road} color="blue" />
+            return <LineSeries data={road} color="red" />
           })}
           {/* <VerticalGridLines />
           <HorizontalGridLines />
