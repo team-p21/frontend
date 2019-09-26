@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
   LineSeries,
-  VerticalGridLines,
   MarkSeries,
   FlexibleXYPlot,
-  VerticalBarSeries
 } from "react-vis";
 
 import axiosWithAuth from "../auth/axiosAuth";
