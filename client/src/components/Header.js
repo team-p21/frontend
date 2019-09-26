@@ -12,7 +12,7 @@ const Header = (props) => {
     const logOut = e => {
         e.preventDefault();
         localStorage.removeItem("key");
-        props.history.push("/login");
+        props.history.push("/");
       };
 
     return (
@@ -42,7 +42,7 @@ const Header = (props) => {
 
 // Styled components 
 const HeaderStyle = styled.section`
-  width: 92.4%;
+  width: 90.8%;
   display: flex;
   flex-direction: row;
   align-items: center;
